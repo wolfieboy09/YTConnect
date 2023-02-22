@@ -1,11 +1,5 @@
-#ooooKkkJKDJK
-#zinusiqy@finews.biz
-
 import requests
 import json
-import datetime
-
-print(datetime.timedelta())
 
 # Important
 key = "AIzaSyApx8brEEcP1qq_b4hAd74yZNO9sx12xgg"
@@ -38,7 +32,7 @@ class user():
           views = r.json()['items'][0]['statistics']['viewCount']
           return views       
      def about(user):
-          #About of YouTuber
+          #About of YouTuber (COMING SOON)
           r = requests.get(f"https://youtube.com/{user}/about").text
           if r.status_code == 200:
                print("Got")
