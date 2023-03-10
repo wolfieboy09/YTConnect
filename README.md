@@ -1,21 +1,26 @@
 # YTConnect
 
-The python module to get data from YouTube ```v0.0.1``` (beta)
-This can:
-Get YouTuber Subscriber Count, Views and more!
+The Python module to get data from YouTube `v0.0.1` (beta)
+This can get a YouTuber's subscriber count, views and more!
 
-## To be safe, this does not have any POST or PUT requests.
+## Installation
 
-(WIP) To Install, do
+`ytconnect` is currently not published on PyPi, but you can install it from source:
+
+```bash
+git clone https://github.com/Knightbot63-Github/YTConnect
+cd YTConnect
+pip install -e .
 ```
-pip install -U ytconnect
+
+## Example usage
+
+Fetching information from `MrBeast`:
+
+```py
+from ytconnect import User
+
+user = User("MrBeast6000") 
+print(user.subscriber_count())
+print(user.view_count())
 ```
-or in python
-```
-import os
-os.system("pip install ytconnect")
-```
-## Connecting to a YouTube User (Not Tested)
-```
-import ytconnect as yc
-user.subscriber_count("MrBeast6000")
