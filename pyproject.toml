@@ -1,14 +1,10 @@
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "my_package"
+name = "ytconnect"
+description = "Gets YouTuber information"
+version = "0.0.1"
 authors = [
-    {name = "Josiah Carberry", email = "josiah_carberry@brown.edu"},
+    { name = "Knightbot63", email = "Knightbot63@whatever.email" }
 ]
-description = "My package description"
-readme = "README.rst"
-requires-python = ">=3.7"
-keywords = ["one", "two"]
-license = {text = "BSD-3-Clause"}
+dependencies = [
+    "requests"
+]
