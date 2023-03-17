@@ -1,51 +1,59 @@
 import requests
-import json
 
 # Important
-key = "AIzaSyApx8brEEcP1qq_b4hAd74yZNO9sx12xgg"
+KEY = "AIzaSyApx8brEEcP1qq_b4hAd74yZNO9sx12xgg"
 
-bold = "\u001b[1m"
-Black = "\u001b[30m"
-Red = "\u001b[31m"
-Green = "\u001b[32m"
-Yellow = "\u001b[33m"
-Blue =  "\u001b[34m"
-Magenta = "\u001b[35m"
-Cyan = "\u001b[36m"
-clear = "\u001b[0m"
-'''
-Please note, this is rounded and NOT 100% Accurate due to GoogleAPIs not getting live counts.
-'''
-# <--- Getting a YT User --->
-class user():
+class Colors:
+     BOLD = "\u001b[1m"
+     BLACK = "\u001b[30m"
+     RED = "\u001b[31m"
+     GREEN = "\u001b[32m"
+     YELLOW = "\u001b[33m"
+     BLUE =  "\u001b[34m"
+     MAGENTA = "\u001b[35m"
+     CYAN = "\u001b[36m"
+     CLEAR = "\u001b[0m"
+
+class User:
+     """Logic for retrieving information on a YouTube user
+     
+     NOTE: Commenting, posting and replying are not available because of bot/spam attacks"""
+     def __init__(self, user):
+          self.user = user
+          self.session = requests.Session()
+
      def subscriber_count(self):
-          #Subscriber Count
-          url = f"https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername={self}&key={key}"
-          print(url)
-          r = requests.get(url)
+          """Get the subscriber count of a YouTuber"""
+          url = f"https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername={self.user}&key={KEY}"
+          r = self.session.get(url)
           subs = r.json()['items'][0]['statistics']['subscriberCount']
           return subs
-     def view_count(user):
-          #View Count of YouTuber
-          url = f"https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername={user}&key={key}"
-          r = requests.get(url)
+
+     def view_count(self):
+          """Get the total view count of a YouTuber
+          
+          NOTE: This is rounded and NOT 100% accurate due to GoogleAPIs not getting live counts."""
+          url = f"https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername={self.user}&key={KEY}"
+          r = self.session.get(url)
           views = r.json()['items'][0]['statistics']['viewCount']
-          return views       
-     def about(user):
-          #About of YouTuber (COMING SOON)
-          r = requests.get(f"https://youtube.com/{user}/about").text
+          return views
+
+     def about(self):
+          """Get the about section of a YouTuber (incomplete)"""
+          r = self.session.get(f"https://youtube.com/{self.user}/about").text
+          # TODO: write logic for parsing about section
           if r.status_code == 200:
                print("Got")
           else:
                print("Error!")
-     def location(user):
-          #Location of YouTuber
-          pass
-     def video_count(user):
-          url = f"https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername={user}&key={key}"
-          r = requests.get(url)
-          vcount = r.json()['items'][0]['statistics']['videoCount']
-          return vcount   
-'''
-To prevent spam and bot attacks, Commenting, posting, replying etc. is not a thing with YouTubeConnect and never will be.
-'''
+
+     def location(self):
+          """Get the geographical location of a YouTuber (incomplete)"""
+          raise NotImplementedError("The logic for this function is not complete")
+
+     def video_count(self):
+          """Get the number of videos a YouTuber has created"""
+          url = f"https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername={self.user}&key={KEY}"
+          r = self.session.get(url)
+          vid_count = r.json()['items'][0]['statistics']['videoCount']
+          return vid_count
