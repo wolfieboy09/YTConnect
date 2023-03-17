@@ -27,4 +27,4 @@ print(user.view_count())
 
 ## Credits:
 [@lemystic for Changing a few things and pull requests!](https://github.com/lemystic)
-Google for API
+\nGoogle for API
