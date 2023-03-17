@@ -1,5 +1,5 @@
-from . import user
-from . import Session
+from .user import user
+from .session import Session
 
 # <--- Handling Exceptions --->
 class ConnectionAbortedError:
