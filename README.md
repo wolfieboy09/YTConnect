@@ -8,7 +8,7 @@ This can get a YouTuber's subscriber count, views and more!
 `ytconnect` is currently not published on PyPi, but you can install it from source:
 
 ```bash
-git clone https://github.com/Knightbot63-Github/YTConnect
+git clone https://github.com/speedwaysingapore/YTConnect
 cd YTConnect
 pip install -e .
 ```
