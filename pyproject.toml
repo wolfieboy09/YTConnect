@@ -2,9 +2,7 @@
 name = "ytconnect"
 description = "Gets YouTuber information"
 version = "0.0.1"
-authors = [
-    { name = "Knightbot63", email = "Knightbot63@whatever.email" }
-]
+
 dependencies = [
     "requests==2.30.0"
 ]
