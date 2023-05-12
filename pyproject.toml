@@ -6,5 +6,5 @@ authors = [
     { name = "Knightbot63", email = "Knightbot63@whatever.email" }
 ]
 dependencies = [
-    "requests"
+    "requests==2.30.0"
 ]
